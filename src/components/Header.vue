@@ -2,7 +2,7 @@
 <template>
     <header>
         <div class="container">
-            <h1>Mina hundar</h1>
+            <h1>Doggos</h1>
             <nav>
                 <ul>
                     <!-- Routerlink för navigering -->
@@ -44,8 +44,8 @@ export default {
 /* Styling för navigering */
 header {
     padding: 0;
-    background-color: #e7e7e7;
-    color: #222020;
+    background-color: #948e76;
+    color: #100c0c;
 }
 
 .container {
@@ -67,7 +67,7 @@ li {
 }
 
 a {
-    color: #222020;
+    color: #0a0707;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -80,6 +80,7 @@ a:hover {
     display: flex;
     margin: 0 auto;
     width: 100%;
+    border-top: 1px solid;
 }
 
 @media screen and (max-width: 1000px) {

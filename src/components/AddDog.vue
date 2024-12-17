@@ -1,25 +1,42 @@
 <template>
-    <form @submit.prevent="addDog()">
-        <label for="name">Hundens namn:</label>
-        <input v-model="dog.name" type="text" required>
+    
+<form @submit.prevent="addDog()">
+        
+            <label for="name">Hundens namn:</label>
+            <input v-model="dog.name" type="text" id="name" required>
+        
 
-        <label for="owner">Ägare:</label>
-        <input v-model="dog.owner" type="text" required>
+        
+            <label for="owner">Ägare:</label>
+            <input v-model="dog.owner" type="text" id="owner" required>
+       
 
-        <label for="breed">Ras:</label>
-        <input v-model="dog.breed" type="text" required>
+        
+            <label for="breed">Ras:</label>
+            <input v-model="dog.breed" type="text" id="breed" required>
+      
 
-        <label for="age">Ålder:</label>
-        <input v-model="dog.age" type="number" required>
+       
+            <label for="age">Ålder:</label>
+            <input v-model="dog.age" type="number" id="age" required>
+      
 
-        <label for="description">Beskrivning:</label>
-        <textarea v-model="dog.description" required></textarea>
+        
+            <label for="description">Beskrivning:</label>
+            <textarea v-model="dog.description" id="description" required></textarea>
+        
 
-        <label for="vaccinated">Vaccinerad:</label>
-        <input v-model="dog.vaccinated" type="checkbox">
+        
+            <label for="vaccinated">
+                <input v-model="dog.vaccinated" type="checkbox" id="vaccinated">
+                Vaccinerad
+            </label>
+       
 
-        <input type="submit" value="Lägg till">
+     
+            <input type="submit" value="Lägg till" class="submit-btn">
     </form>
+
 </template>
 
 <script>
@@ -78,47 +95,91 @@ export default {
 </script>
 
 <style scoped>
+
+
+/* Formulär */
 form {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 700px;
+    margin: 2em auto;
+    padding: 1.5em;
+    background-color: #f7f6f6;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Labels */
 label {
+    display: block;
+    font-size: 1em;
     font-weight: bold;
-    font-size: 1.4em;
+    margin: 0.5em;
+    color: #4c3312;
 }
 
-input[type="text"] {
-    max-width: 400px;
-    padding: 0.5em;
+/* Inputs */
+input[type="text"],
+input[type="number"],
+textarea {
     width: 100%;
+    padding: 0.8em;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
 }
 
-input[type="submit"] {
-    max-width: 100px;
-    padding: 0.6em;
+input:focus,
+textarea:focus {
+    border-color: #FBB480;
+    outline: none;
+    box-shadow: 0 0 4px rgba(149, 137, 48, 0.5);
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    margin-right: 0.5em;
+    vertical-align: middle;
+}
+
+/* Submit-knapp */
+.submit-btn {
     width: 100%;
-    margin-left: 1em;
-    background-color: #5b6e2b;
-    color: #fff;
-    text-transform: uppercase;
+    padding: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background-color: #057839;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-input[type="submit"]:hover {
-    background-color: #3c4c15;
+.submit-btn:hover {
+    background-color: #01411e;
 }
 
+/* Media queries */
 @media screen and (max-width: 800px) {
     form {
         width: 90%;
+        padding: 1em;
+        margin: 0 auto;
     }
 
-    input[type="text"] {
-        max-width: 400px;
-        padding: 0.5em;
-        width: 90%;
+
+    /* För submit-knappen */
+    .submit-btn {
+        padding: 1em;
+        font-size: 1.2em;
     }
 }
 
@@ -127,5 +188,13 @@ input[type="submit"]:hover {
         margin-left: 0em;
         margin-top: 1em;
     }
+
+    /* För inputfält på väldigt små skärmar */
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+    }
+
 }
 </style>
