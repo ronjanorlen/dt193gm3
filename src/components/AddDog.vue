@@ -1,4 +1,5 @@
 <template>
+    <div class="container container p-2 mt-2">
     <!-- Formulär för att lägga till hund -->
     <form @submit.prevent="addDog()">
         <label for="name">Hundens namn:</label>
@@ -29,7 +30,7 @@
         </div>
         <input type="submit" value="Lägg till" class="submit-btn">
     </form>
-
+</div>
 </template>
 
 <script>
@@ -189,7 +190,7 @@ input[type="checkbox"] {
 /* Media queries */
 @media screen and (max-width: 800px) {
     form {
-        width: 90%;
+        width: 100%;
         padding: 1em;
         margin: 0 auto;
         border-radius: 0;

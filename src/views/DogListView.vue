@@ -1,32 +1,41 @@
 <!-- Undersida för alla hundar som listas -->
 <template>
-    <h2>Mina hundar</h2>
-    <!-- Loader med if/else-sats-->
-    <div v-if="loading" class="loader"></div>
-    <!-- Hundlista, visas när api laddats in -->
-    <div v-else>
-        <!-- Tabell för alla hundar -->
-        <table class="dog-table">
-            <thead>
-                <tr>
-                    <th>Namn</th>
-                    <th>Ägare</th>
-                    <th>Ras</th>
-                    <th>Ålder</th>
-                    <th>Beskrivning</th>
-                    <th>Vaccinerad</th>
-                    <th>Radera</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Loopa igenom hundar -->
-                <Dogs v-for="dog in dogs" :key="dog._id" :dog="dog" @deleteDog="deleteDog(dog._id)" />
-            </tbody>
-        </table>
+    <div class="container p-4 mt-4">
+        <h2>Mina hundar</h2>
+        <!-- Loader med if/else-sats-->
+        <div v-if="loading" class="loader">
+            <div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Hämtar hundar..</span>
+  </div>
+</div>
+        </div>
+        
+        <!-- Hundlista, visas när api laddats in -->
+        <div v-else>
+            <!-- Tabell för alla hundar -->
+            <table class="dog-table">
+                <thead>
+                    <tr>
+                        <th>Namn</th>
+                        <th>Ägare</th>
+                        <th>Ras</th>
+                        <th>Ålder</th>
+                        <th>Beskrivning</th>
+                        <th>Vaccinerad</th>
+                        <th>Radera</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loopa igenom hundar -->
+                    <Dogs v-for="dog in dogs" :key="dog._id" :dog="dog" @deleteDog="deleteDog(dog._id)" />
+                </tbody>
+            </table>
+        </div>
+        <!-- Lägg till hund -->
+        <h2>Lägg till ny hund:</h2>
+        <AddDog @dogAdded="getDogs()" />
     </div>
-    <!-- Lägg till hund -->
-    <h2>Lägg till ny hund:</h2>
-    <AddDog @dogAdded="getDogs()" />
 </template>
 
 <script>
@@ -58,9 +67,9 @@ export default {
                 // Om det inte går att hämta data
             } catch (error) {
                 console.error("Något gick fel vid hämtning av hundar", error);
-            } 
-                // När data hämtats
-                this.loading = false; // Dölj loader
+            }
+            // När data hämtats
+            this.loading = false; // Dölj loader
         },
         // Funktion för att ta bort hund ur listan 
         async deleteDog(_id) {
@@ -88,43 +97,7 @@ export default {
 h2 {
     text-align: center;
     font-size: 2em;
-}
-
-/* Loader */
-.loader {
-    display: flex;
-    margin: 10px auto;
-}
-
-.loader {
-    border: 4px solid rgba(0, 0, 0, .1);
-    border-left-color: transparent;
-    border-radius: 50%;
-}
-
-.loader {
-    border: 4px solid rgba(0, 0, 0, .1);
-    border-left-color: transparent;
-    width: 36px;
-    height: 36px;
-}
-
-.loader {
-    border: 4px solid rgba(0, 0, 0, .1);
-    border-left-color: transparent;
-    width: 36px;
-    height: 36px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+    margin-top: 1em;
 }
 
 /* Hundtabell-container*/

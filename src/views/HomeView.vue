@@ -1,4 +1,5 @@
 <template>
+    <div class="container p-4 mt-4">
     <h2>Doggos - en plats att samla sina hundar</h2>
     <p>Jag är en riktig hundälskare och har alltid varit!<br> Tycker det är så mysigt
         att ta med sig hunden ut på promenad, skidåkning, cykling, en fika eller vad som helst.
@@ -14,6 +15,7 @@
     <div class="dogimage">
         <img src="@/assets/images/dogs.jpg" alt="Två hundar i en kartong" />
     </div>
+</div>
 
 </template>
 
@@ -29,10 +31,8 @@ h2 {
 
 p {
     text-align: center;
-    padding: 1em;
     font-size: 1.2em;
-    width: 80%;
-    margin: 0 auto;
+    margin: 1em auto;
 }
 
 /* Hundbild */
@@ -46,7 +46,7 @@ p {
 /* Media queries */
 @media screen and (max-width: 800px) {
     .dogimage img {
-        max-width: 90%;
+        max-width: 100%;
     }
 }
 </style>
