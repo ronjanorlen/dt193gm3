@@ -51,17 +51,16 @@ export default {
             this.loading = true; // Visa loader 
             try {
                 const response = await fetch("https://moment-2-backend-ramverk-ronjanorlen.onrender.com/dogs");
-
                 // Vid svar från webbtjänst, lagra i data-variabel
                 const data = await response.json();
-
                 // Lagra data i reaktiv data 
                 this.dogs = data;
+                // Om det inte går att hämta data
             } catch (error) {
                 console.error("Något gick fel vid hämtning av hundar", error);
-            } finally {
+            } 
+                // När data hämtats
                 this.loading = false; // Dölj loader
-            }
         },
         // Funktion för att ta bort hund ur listan 
         async deleteDog(_id) {
@@ -78,6 +77,7 @@ export default {
             this.getDogs();
         }
     },
+    // Kör funktion när komponent laddats in
     mounted() {
         this.getDogs();
     }
@@ -89,22 +89,26 @@ h2 {
     text-align: center;
     font-size: 2em;
 }
+
 /* Loader */
 .loader {
     display: flex;
     margin: 10px auto;
 }
+
 .loader {
     border: 4px solid rgba(0, 0, 0, .1);
     border-left-color: transparent;
     border-radius: 50%;
 }
+
 .loader {
     border: 4px solid rgba(0, 0, 0, .1);
     border-left-color: transparent;
     width: 36px;
     height: 36px;
 }
+
 .loader {
     border: 4px solid rgba(0, 0, 0, .1);
     border-left-color: transparent;
@@ -130,6 +134,7 @@ h2 {
     text-align: center;
     overflow-x: auto;
 }
+
 /* Tabell */
 table {
     max-width: 100%;
@@ -137,8 +142,9 @@ table {
     margin: 0.6em auto;
     border: 1px solid;
     background-color: #fff7f3;
-    
+
 }
+
 /* Tabellhuvud */
 th {
     background-color: #968057;
@@ -152,9 +158,10 @@ th {
     .dog-table {
         max-width: 100%;
         margin: 0 auto;
-        display: block; 
-        
+        display: block;
+
     }
+
     table {
         width: 100%;
         margin: 15px auto;

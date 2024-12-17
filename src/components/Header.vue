@@ -22,24 +22,17 @@
             </nav>
         </div>
         <div class="banner">
-            <img :src="banner" alt="Hundsilhuett i solnedgång" />
+            <img src="@/assets/images/banner.png" alt="En hundsiluett i solnedgången" />
         </div>
     </header>
 </template>
 
 <script>
-import banner from "../assets/images/banner.png";
 // Importera och använd routerlink som komponent
 import { RouterLink } from 'vue-router'
 export default {
     components: {
         RouterLink
-    },
-    // Returnera banner-bild
-    data() {
-        return {
-            banner
-        };
     }
 }
 </script>

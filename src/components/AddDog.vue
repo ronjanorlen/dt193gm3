@@ -1,5 +1,5 @@
 <template>
-<!-- Formulär för att lägga till hund -->
+    <!-- Formulär för att lägga till hund -->
     <form @submit.prevent="addDog()">
         <label for="name">Hundens namn:</label>
         <input v-model="dog.name" type="text" id="name">
@@ -20,16 +20,15 @@
             <input v-model="dog.vaccinated" type="checkbox" id="vaccinated">
             Vaccinerad
         </label>
+        <!-- Felmeddelanden -->
+        <div v-if="errors.length" class="error-msg">
+            <p>Du har visst glömt några saker:</p>
+            <ul>
+                <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+            </ul>
+        </div>
         <input type="submit" value="Lägg till" class="submit-btn">
     </form>
-
-    <!-- Felmeddelanden -->
-    <div v-if="errors.length" class="error-msg">
-    <p>Du har visst glömt några saker:</p>
-    <ul>
-        <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-    </ul>
-</div>
 
 </template>
 
@@ -54,7 +53,7 @@ export default {
         async addDog() {
             this.errors = []; // Töm ev tidigare fel 
             // Kontrollera att fält är korrekt ifyllda 
-            if (!this.dog.name) this.errors.push("Du måste ange hundens namn.");
+            if (!this.dog.name) this.errors.push("Ange hundens namn.");
             if (!this.dog.owner) this.errors.push("Ange hundens ägare.");
             if (!this.dog.breed) this.errors.push("Ange hundens ras.");
             if (!this.dog.age || this.dog.age <= 0) this.errors.push("Ange ålder, lägsta möjliga är 1.");
@@ -68,36 +67,36 @@ export default {
             // Om korrekt ifyllt, skicka data 
             const dogBody = { ...this.dog }; // Spara data 
             const response = await fetch("https://moment-2-backend-ramverk-ronjanorlen.onrender.com/dogs", {
-                    method: "POST",
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(dogBody)
-                });
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dogBody)
+            });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log('Hund tillagd:', data);
-                } else {
-                    console.error("Error", response.statusText);
-                }
-
-                // Rensa formuläret
-                this.dog = {
-                    name: "",
-                    owner: "",
-                    breed: "",
-                    age: null,
-                    description: "",
-                    vaccinated: false
-                };
-
-                // Läs in listan på nytt 
-                this.$emit("dogAdded");
+            if (response.ok) {
+                const data = await response.json();
+                alert("Hund tillagd!");
+            } else {
+                console.error("Error", response.statusText);
             }
+
+            // Rensa formuläret
+            this.dog = {
+                name: "",
+                owner: "",
+                breed: "",
+                age: null,
+                description: "",
+                vaccinated: false
+            };
+
+            // Läs in listan på nytt 
+            this.$emit("dogAdded");
         }
     }
+}
 </script>
 
 <style scoped>
@@ -175,8 +174,11 @@ input[type="checkbox"] {
 .error-msg {
     margin-bottom: 1em;
     padding: 1em;
-    
     color: #d32f2f;
+}
+
+.error-msg p {
+    font-weight: bold;
 }
 
 .error-msg ul {

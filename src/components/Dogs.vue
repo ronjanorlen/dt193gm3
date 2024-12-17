@@ -1,6 +1,6 @@
 <!-- Komponent för hund som skrivs ut, hundar i en tabell -->
-    <template>
-   <tr>
+<template>
+    <tr>
         <td>{{ dog.name }}</td>
         <td>{{ dog.owner }}</td>
         <td>{{ dog.breed }}</td>
@@ -11,7 +11,7 @@
         <td>
             <button @click="$emit('deleteDog')"><i class="fa-solid fa-trash"></i></button>
         </td>
-   </tr>
+    </tr>
 </template>
 
 <script>
@@ -25,17 +25,20 @@ export default {
 
 <style scoped>
 /* Tabellrad och tabelldata */
-tr, td {
+tr,
+td {
     padding: 0.8em;
     color: #000;
 }
+
 tbody tr:nth-child(odd) {
-  background-color: #e7e7e7; 
+    background-color: #e7e7e7;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #ffffff; 
+    background-color: #ffffff;
 }
+
 tbody tr:hover {
     background-color: #C5C1B5;
 }

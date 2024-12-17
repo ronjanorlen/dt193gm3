@@ -15,9 +15,8 @@ footer {
     padding: 0;
     height: 100px;
     line-height: 100px;
-    background-color:#948e76;
+    background-color: #948e76;
     color: #f8f8f8;
     text-align: center;
 }
-
 </style>
