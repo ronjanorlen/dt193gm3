@@ -2,19 +2,19 @@
 <!-- Formulär för att lägga till hund -->
     <form @submit.prevent="addDog()">
         <label for="name">Hundens namn:</label>
-        <input v-model="dog.name" type="text" id="name" required>
+        <input v-model="dog.name" type="text" id="name">
 
         <label for="owner">Ägare:</label>
-        <input v-model="dog.owner" type="text" id="owner" required>
+        <input v-model="dog.owner" type="text" id="owner">
 
         <label for="breed">Ras:</label>
-        <input v-model="dog.breed" type="text" id="breed" required>
+        <input v-model="dog.breed" type="text" id="breed">
 
         <label for="age">Ålder:</label>
-        <input v-model="dog.age" type="number" id="age" required>
+        <input v-model="dog.age" type="number" id="age">
 
         <label for="description">Beskrivning:</label>
-        <textarea v-model="dog.description" id="description" required></textarea>
+        <textarea v-model="dog.description" id="description"></textarea>
 
         <label for="vaccinated">
             <input v-model="dog.vaccinated" type="checkbox" id="vaccinated">
@@ -22,6 +22,14 @@
         </label>
         <input type="submit" value="Lägg till" class="submit-btn">
     </form>
+
+    <!-- Felmeddelanden -->
+    <div v-if="errors.length" class="error-msg">
+    <p>Du har visst glömt några saker:</p>
+    <ul>
+        <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+    </ul>
+</div>
 
 </template>
 
@@ -36,17 +44,30 @@ export default {
                 age: null,
                 description: "",
                 vaccinated: false
-            }
+            },
+            errors: [] // Ev felmeddelanden
         };
     },
     emits: ["dogAdded"],
     // Metod för att läsa in data 
     methods: {
         async addDog() {
-            // Kontroll att fält är ifyllda
-            if (this.dog.name.length > 1 && this.dog.owner && this.dog.breed && this.dog.age > 0 && this.dog.description) {
-                const dogBody = { ...this.dog };  // Spara data i variabel 
-                const response = await fetch("https://moment-2-backend-ramverk-ronjanorlen.onrender.com/dogs", {
+            this.errors = []; // Töm ev tidigare fel 
+            // Kontrollera att fält är korrekt ifyllda 
+            if (!this.dog.name) this.errors.push("Du måste ange hundens namn.");
+            if (!this.dog.owner) this.errors.push("Ange hundens ägare.");
+            if (!this.dog.breed) this.errors.push("Ange hundens ras.");
+            if (!this.dog.age || this.dog.age <= 0) this.errors.push("Ange ålder, lägsta möjliga är 1.");
+            if (!this.dog.description) this.errors.push("Ange en beskrivning om hunden.");
+
+            // Om ej korrekt, avbryt 
+            if (this.errors.length > 0) {
+                return;
+            }
+
+            // Om korrekt ifyllt, skicka data 
+            const dogBody = { ...this.dog }; // Spara data 
+            const response = await fetch("https://moment-2-backend-ramverk-ronjanorlen.onrender.com/dogs", {
                     method: "POST",
                     headers: {
                         "Accept": "application/json",
@@ -77,7 +98,6 @@ export default {
             }
         }
     }
-}
 </script>
 
 <style scoped>
@@ -149,6 +169,19 @@ input[type="checkbox"] {
 
 .submit-btn:hover {
     background-color: #01411e;
+}
+
+/* Felmeddelanden */
+.error-msg {
+    margin-bottom: 1em;
+    padding: 1em;
+    
+    color: #d32f2f;
+}
+
+.error-msg ul {
+    margin: 0;
+    padding-left: 1.5em;
 }
 
 /* Media queries */
