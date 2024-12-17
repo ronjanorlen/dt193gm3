@@ -16,17 +16,26 @@
                     </li>
                 </ul>
             </nav>
-
+        </div>
+        <div class="banner">
+            <img :src="banner" alt="Hundsilhuett i solnedgång" />
         </div>
     </header>
 </template>
 
 <script>
+import banner from "../assets/images/banner.png";
 // Importera och använd routerlink som komponent
 import { RouterLink } from 'vue-router'
 export default {
     components: {
         RouterLink
+    },
+    // Returnera banner-bild
+    data() {
+        return {
+            banner
+        };
     }
 }
 </script>
@@ -34,9 +43,9 @@ export default {
 <style scoped>
 /* Styling för navigering */
 header {
-    padding: 0.2em;
-    background-color: #5b6e2b;
-    color: #fff;
+    padding: 0;
+    background-color: #e7e7e7;
+    color: #222020;
 }
 
 .container {
@@ -58,13 +67,19 @@ li {
 }
 
 a {
-    color: #fff;
+    color: #222020;
     text-decoration: none;
     text-transform: uppercase;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+.banner img {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
