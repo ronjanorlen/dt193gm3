@@ -1,16 +1,16 @@
 <template>
-    <!-- HTML-kod -->
      <!-- Inkludera huvudmeny -->
      <Header />
      <main>
         <!-- Vyer -->
          <RouterView />
      </main>
+     <!-- Inkludera footer -->
      <Footer />
     </template>
     
     <script>
-    // Javascript-kod
+    // Importera vyer samt header och footer komponenter
     import { RouterView } from 'vue-router'
     import Header from "./components/Header.vue";
     import Footer from "./components/Footer.vue";

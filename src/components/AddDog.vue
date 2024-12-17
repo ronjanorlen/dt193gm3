@@ -1,40 +1,26 @@
 <template>
-    
-<form @submit.prevent="addDog()">
-        
-            <label for="name">Hundens namn:</label>
-            <input v-model="dog.name" type="text" id="name" required>
-        
+<!-- Formulär för att lägga till hund -->
+    <form @submit.prevent="addDog()">
+        <label for="name">Hundens namn:</label>
+        <input v-model="dog.name" type="text" id="name" required>
 
-        
-            <label for="owner">Ägare:</label>
-            <input v-model="dog.owner" type="text" id="owner" required>
-       
+        <label for="owner">Ägare:</label>
+        <input v-model="dog.owner" type="text" id="owner" required>
 
-        
-            <label for="breed">Ras:</label>
-            <input v-model="dog.breed" type="text" id="breed" required>
-      
+        <label for="breed">Ras:</label>
+        <input v-model="dog.breed" type="text" id="breed" required>
 
-       
-            <label for="age">Ålder:</label>
-            <input v-model="dog.age" type="number" id="age" required>
-      
+        <label for="age">Ålder:</label>
+        <input v-model="dog.age" type="number" id="age" required>
 
-        
-            <label for="description">Beskrivning:</label>
-            <textarea v-model="dog.description" id="description" required></textarea>
-        
+        <label for="description">Beskrivning:</label>
+        <textarea v-model="dog.description" id="description" required></textarea>
 
-        
-            <label for="vaccinated">
-                <input v-model="dog.vaccinated" type="checkbox" id="vaccinated">
-                Vaccinerad
-            </label>
-       
-
-     
-            <input type="submit" value="Lägg till" class="submit-btn">
+        <label for="vaccinated">
+            <input v-model="dog.vaccinated" type="checkbox" id="vaccinated">
+            Vaccinerad
+        </label>
+        <input type="submit" value="Lägg till" class="submit-btn">
     </form>
 
 </template>
@@ -88,15 +74,13 @@ export default {
 
                 // Läs in listan på nytt 
                 this.$emit("dogAdded");
-            } 
+            }
         }
     }
 }
 </script>
 
 <style scoped>
-
-
 /* Formulär */
 form {
     max-width: 700px;
@@ -173,8 +157,8 @@ input[type="checkbox"] {
         width: 90%;
         padding: 1em;
         margin: 0 auto;
+        border-radius: 0;
     }
-
 
     /* För submit-knappen */
     .submit-btn {
@@ -183,18 +167,18 @@ input[type="checkbox"] {
     }
 }
 
+/* Media queries */
 @media screen and (max-width: 587px) {
     input[type="submit"] {
         margin-left: 0em;
         margin-top: 1em;
     }
 
-    /* För inputfält på väldigt små skärmar */
+    /* För inputfält på små skärmar */
     input[type="text"],
     input[type="number"],
     textarea {
         width: 100%;
     }
-
 }
 </style>

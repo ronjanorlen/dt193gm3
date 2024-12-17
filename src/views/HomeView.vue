@@ -1,12 +1,12 @@
-<script setup>
-
-</script>
-
 <template>
     <h2>Startsida</h2>
     <p>Här kan du lägga till dina favorithundar!</p>
  
 </template>
+
+<script setup>
+
+</script>
 
 <style scoped>
 h2 {

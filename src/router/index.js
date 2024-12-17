@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DogListView from "../views/DogListView.vue";
+import AboutView from "../views/AboutView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,8 +15,14 @@ const router = createRouter({
     {
       // routing till undersida för lista med hundar
       path: '/my-dogs',
-      name: 'mina hundar',
+      name: 'my dogs',
       component: DogListView
+    },
+    {
+      // routing till undersida om-sida
+      path: '/about',
+      name: 'about',
+      component: AboutView
     }
   ]
 })

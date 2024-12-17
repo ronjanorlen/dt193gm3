@@ -2,7 +2,7 @@
 <template>
     <header>
         <div class="container">
-            <h1>Doggos</h1>
+            <h1>Doggos <i class="fa-solid fa-paw"></i></h1>
             <nav>
                 <ul>
                     <!-- Routerlink för navigering -->
@@ -13,6 +13,10 @@
                     <li>
                         <!-- Undersida med lista på alla hundar -->
                         <RouterLink to="/my-dogs">Mina hundar</RouterLink>
+                    </li>
+                    <li>
+                        <!-- Undersida Om-sida -->
+                        <RouterLink to="/about">Om</RouterLink>
                     </li>
                 </ul>
             </nav>
@@ -86,6 +90,10 @@ a:hover {
 @media screen and (max-width: 1000px) {
     .container {
         width: 95%;
+    }
+
+    header {
+        font-size: 0.6em;
     }
 }
 </style>

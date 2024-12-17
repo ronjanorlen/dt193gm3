@@ -1,7 +1,6 @@
 <!-- Undersida för alla hundar som listas -->
 <template>
     <h2>Mina hundar</h2>
-    <AddDog @dogAdded="getDogs()" />
     <!-- Loader med if/else-sats-->
     <div v-if="loading" class="loader"></div>
     <!-- Hundlista, visas när api laddats in -->
@@ -25,6 +24,9 @@
             </tbody>
         </table>
     </div>
+    <!-- Lägg till hund -->
+    <h2>Lägg till ny hund:</h2>
+    <AddDog @dogAdded="getDogs()" />
 </template>
 
 <script>
@@ -123,7 +125,7 @@ h2 {
 
 /* Hundtabell-container*/
 .dog-table {
-    max-width: 100%;
+    width: 100%;
     margin: 0.6em auto;
     text-align: center;
     overflow-x: auto;
@@ -139,7 +141,7 @@ table {
 }
 /* Tabellhuvud */
 th {
-    background-color: #bd8a54;
+    background-color: #968057;
     text-transform: uppercase;
     padding: 1em;
     color: #000;
@@ -148,8 +150,10 @@ th {
 /* Media queries */
 @media screen and (max-width: 800px) {
     .dog-table {
-        width: 100%;
+        max-width: 100%;
         margin: 0 auto;
+        display: block; 
+        
     }
     table {
         width: 100%;
