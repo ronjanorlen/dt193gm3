@@ -1,4 +1,5 @@
 <template>
+    <!-- Komponent för att lägga till hund -->
     <div class="container p-4 mt-2">
         <!-- Formulär för att lägga till hund -->
         <form @submit.prevent="addDog()">

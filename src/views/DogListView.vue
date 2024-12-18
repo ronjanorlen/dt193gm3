@@ -1,13 +1,13 @@
-<!-- Undersida för alla hundar som listas -->
+<!-- Vy för alla hundar som listas -->
 <template>
     <div class="container p-4 mt-4">
-        <h2>Mina favorithundar</h2>
-        
+        <h2>Mina hundkompisar</h2>
+
         <!-- Loader med if/else-sats-->
         <div v-if="loading" class="loader">
             <div class="d-flex justify-content-center">
                 <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Hämtar hundar..</span>
+                    <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div>
@@ -31,8 +31,8 @@
                     <Dogs v-for="dog in dogs" :key="dog._id" :dog="dog" @deleteDog="deleteDog(dog._id)" />
                 </tbody>
             </table>
-              <!-- Lyckad inmatning av ny hund -->
-              <div v-if="successDelete" class="alert alert-success" role="alert">
+            <!-- Lyckad inmatning av ny hund -->
+            <div v-if="successDelete" class="alert alert-success" role="alert">
                 {{ successDelete }}
             </div>
         </div>
@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import Dogs from "../components/Dogs.vue";
-import AddDog from "../components/AddDog.vue";
+import Dogs from "../components/Dogs.vue"; // Importera komponent för att läsa ut hund
+import AddDog from "../components/AddDog.vue"; // Importera komponent för att lägga till hund
 
 export default {
     // Reaktiv data
@@ -115,6 +115,7 @@ h2 {
     border: 1px solid;
     overflow-x: auto;
 }
+
 th {
     font-size: 1.2em;
     background-color: #8f8e8e;

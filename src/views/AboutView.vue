@@ -13,7 +13,7 @@
             men
             jag är också nyfiken på att testa Axios framöver. Jag har även inkluderat Bootstrap för att testa på hur det
             är att
-            kombinera flera ramverk. <br><br>
+            kombinera flera ramverk med varandra. <br><br>
             I övrigt tycker jag det är lite knepigt att hålla reda på komponenter, vyer och hur man får dessa att "prata
             med
             varandra", men jag tror att det blir bättre ju mer man jobbar med Vue och lär sig mer.
@@ -26,8 +26,7 @@
 
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style scoped>
 h2 {

@@ -9,7 +9,8 @@
         <td>{{ dog.vaccinated ? "Ja" : "Nej" }}</td>
         <!-- Knapp för att ta bort hund -->
         <td>
-            <button @click="$emit('deleteDog', dog._id)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+            <button @click="$emit('deleteDog', dog._id)" class="btn btn-danger btn-sm"><i
+                    class="fa-solid fa-trash"></i></button>
         </td>
     </tr>
 </template>
