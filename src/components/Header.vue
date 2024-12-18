@@ -33,7 +33,7 @@
         </nav>
         <!-- Text på bannerbild -->
         <div class="infostart">
-            <h1>DOGGOS</h1>
+            <h1>DOGGOS <i class="fa-solid fa-paw"></i></h1>
             <p>Samla alla dina favorithundar på ett ställe!</p>
         </div>
         <!-- Overlay -->
