@@ -1,20 +1,20 @@
 <!-- Undersida för alla hundar som listas -->
 <template>
     <div class="container p-4 mt-4">
-        <h2>Mina hundar</h2>
+        <h2>Mina favorithundar</h2>
+        
         <!-- Loader med if/else-sats-->
         <div v-if="loading" class="loader">
             <div class="d-flex justify-content-center">
-  <div class="spinner-border" role="status">
-    <span class="visually-hidden">Hämtar hundar..</span>
-  </div>
-</div>
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Hämtar hundar..</span>
+                </div>
+            </div>
         </div>
-        
         <!-- Hundlista, visas när api laddats in -->
         <div v-else>
             <!-- Tabell för alla hundar -->
-            <table class="dog-table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -97,47 +97,27 @@ export default {
 h2 {
     text-align: center;
     font-size: 2em;
-    margin-top: 1em;
-}
-
-/* Hundtabell-container*/
-.dog-table {
-    width: 100%;
-    margin: 0.6em auto;
-    text-align: center;
-    overflow-x: auto;
+    margin: 1em;
 }
 
 /* Tabell */
-table {
+.table {
     max-width: 100%;
-    border-collapse: collapse;
     margin: 0.6em auto;
     border: 1px solid;
-    background-color: #fff7f3;
-
+    overflow-x: auto;
 }
-
-/* Tabellhuvud */
 th {
-    background-color: #968057;
-    text-transform: uppercase;
-    padding: 1em;
-    color: #000;
+    font-size: 1.2em;
+    background-color: #8f8e8e;
 }
 
 /* Media queries */
 @media screen and (max-width: 800px) {
-    .dog-table {
+    .table {
         max-width: 100%;
         margin: 0 auto;
         display: block;
-
-    }
-
-    table {
-        width: 100%;
-        margin: 15px auto;
     }
 }
 </style>

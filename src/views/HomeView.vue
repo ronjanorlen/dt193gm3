@@ -1,6 +1,6 @@
 <template>
     <div class="container p-4 mt-4">
-    <h2>Doggos - en plats att samla sina hundar</h2>
+    <h2>Välkommen till Doggos!</h2>
     <p>Jag är en riktig hundälskare och har alltid varit!<br> Tycker det är så mysigt
         att ta med sig hunden ut på promenad, skidåkning, cykling, en fika eller vad som helst.
         Denna webbplats är skapad för att kunna lägga till hundar som man verkligen tycker om (om man
@@ -38,7 +38,7 @@ p {
 /* Hundbild */
 .dogimage img {
     display: block;
-    margin: 0 auto;
+    margin: 10px auto;
     max-width: 100%;
     height: auto;
 }

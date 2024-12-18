@@ -9,7 +9,7 @@
         <td>{{ dog.vaccinated ? "Ja" : "Nej" }}</td>
         <!-- Knapp för att ta bort hund -->
         <td>
-            <button @click="$emit('deleteDog')"><i class="fa-solid fa-trash"></i></button>
+            <button @click="$emit('deleteDog', dog._id)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
         </td>
     </tr>
 </template>
@@ -29,18 +29,6 @@ tr,
 td {
     padding: 0.8em;
     color: #000;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #e7e7e7;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #ffffff;
-}
-
-tbody tr:hover {
-    background-color: #C5C1B5;
 }
 
 /* Knapp för att ta bort hund */

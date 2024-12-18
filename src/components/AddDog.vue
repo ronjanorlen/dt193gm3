@@ -1,26 +1,37 @@
 <template>
-    <div class="container container p-2 mt-2">
+    <div class="container p-4 mt-2">
     <!-- Formulär för att lägga till hund -->
     <form @submit.prevent="addDog()">
-        <label for="name">Hundens namn:</label>
-        <input v-model="dog.name" type="text" id="name">
+        <div class="mb-3">
+                <label for="name" class="form-label">Hundens namn:</label>
+                <input v-model="dog.name" type="text" id="name" class="form-control">
+            </div>
 
-        <label for="owner">Ägare:</label>
-        <input v-model="dog.owner" type="text" id="owner">
+        <div class="mb-3">
+                <label for="owner" class="form-label">Ägare:</label>
+                <input v-model="dog.owner" type="text" id="owner" class="form-control">
+            </div>
 
-        <label for="breed">Ras:</label>
-        <input v-model="dog.breed" type="text" id="breed">
+        <div class="mb-3">
+                <label for="breed" class="form-label">Ras:</label>
+                <input v-model="dog.breed" type="text" id="breed" class="form-control">
+            </div>
 
-        <label for="age">Ålder:</label>
-        <input v-model="dog.age" type="number" id="age">
+        <div class="mb-3">
+                <label for="age" class="form-label">Ålder:</label>
+                <input v-model="dog.age" type="number" id="age" class="form-control">
+            </div>
 
-        <label for="description">Beskrivning:</label>
-        <textarea v-model="dog.description" id="description"></textarea>
+        <div class="mb-3">
+                <label for="description" class="form-label">Beskrivning:</label>
+                <textarea v-model="dog.description" id="description" class="form-control"></textarea>
+            </div>
 
-        <label for="vaccinated">
-            <input v-model="dog.vaccinated" type="checkbox" id="vaccinated">
-            Vaccinerad
-        </label>
+        <div class="form-check mb-3">
+                <input v-model="dog.vaccinated" type="checkbox" id="vaccinated" class="form-check-input">
+                <label for="vaccinated" class="form-check-label">Vaccinerad</label>
+            </div>
+        
         <!-- Felmeddelanden -->
         <div v-if="errors.length" class="error-msg">
             <p>Du har visst glömt några saker:</p>
@@ -28,7 +39,7 @@
                 <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
             </ul>
         </div>
-        <input type="submit" value="Lägg till" class="submit-btn">
+        <button type="submit" class="btn btn-success">Lägg till hund</button>
     </form>
 </div>
 </template>
@@ -101,87 +112,35 @@ export default {
 </script>
 
 <style scoped>
-/* Formulär */
+.container {
+    background-color: #8f8e8e;
+    border-radius: 25px;
+}
 form {
-    max-width: 700px;
-    margin: 2em auto;
-    padding: 1.5em;
-    background-color: #f7f6f6;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin: 0 auto;
 }
-
-/* Labels */
 label {
-    display: block;
-    font-size: 1em;
     font-weight: bold;
-    margin: 0.5em;
-    color: #4c3312;
-}
-
-/* Inputs */
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 100%;
-    padding: 0.8em;
     font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
+  color: #0e0e0e;
 }
-
-input:focus,
-textarea:focus {
-    border-color: #FBB480;
-    outline: none;
-    box-shadow: 0 0 4px rgba(149, 137, 48, 0.5);
+.btn {
+    color: #fff;
+    width: 30%;
 }
-
-/* Textarea */
-textarea {
-    resize: vertical;
-    min-height: 100px;
+.btn:hover {
+    background-color: #045523;
 }
-
-/* Checkbox */
-input[type="checkbox"] {
-    margin-right: 0.5em;
-    vertical-align: middle;
-}
-
-/* Submit-knapp */
-.submit-btn {
-    width: 100%;
-    padding: 0.8em;
-    font-size: 1em;
-    font-weight: bold;
-    color: white;
-    background-color: #057839;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.submit-btn:hover {
-    background-color: #01411e;
-}
-
 /* Felmeddelanden */
 .error-msg {
     margin-bottom: 1em;
     padding: 1em;
     color: #d32f2f;
 }
-
 .error-msg p {
     font-weight: bold;
 }
-
 .error-msg ul {
     margin: 0;
     padding-left: 1.5em;
@@ -191,30 +150,13 @@ input[type="checkbox"] {
 @media screen and (max-width: 800px) {
     form {
         width: 100%;
-        padding: 1em;
-        margin: 0 auto;
-        border-radius: 0;
-    }
-
-    /* För submit-knappen */
-    .submit-btn {
-        padding: 1em;
-        font-size: 1.2em;
     }
 }
 
 /* Media queries */
 @media screen and (max-width: 587px) {
-    input[type="submit"] {
-        margin-left: 0em;
-        margin-top: 1em;
-    }
-
-    /* För inputfält på små skärmar */
-    input[type="text"],
-    input[type="number"],
-    textarea {
-        width: 100%;
-    }
+    .btn {
+    width: 100%;
+  }
 }
 </style>
