@@ -47,11 +47,4 @@ p {
     max-width: 100%;
     height: auto;
 }
-
-/* Media queries */
-@media screen and (max-width: 800px) {
-    .dogimage img {
-        max-width: 90%;
-    }
-}
 </style>
