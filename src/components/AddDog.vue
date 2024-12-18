@@ -67,8 +67,9 @@ export default {
         };
     },
     emits: ["dogAdded"],
-    // Metod för att läsa in data 
+
     methods: {
+        // Lägg till ny hund
         async addDog() {
             this.errors = []; // Töm ev tidigare fel 
             this.success = ""; // Töm ev tidigare lyckat meddelande

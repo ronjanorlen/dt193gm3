@@ -31,6 +31,10 @@
                     <Dogs v-for="dog in dogs" :key="dog._id" :dog="dog" @deleteDog="deleteDog(dog._id)" />
                 </tbody>
             </table>
+              <!-- Lyckad inmatning av ny hund -->
+              <div v-if="successDelete" class="alert alert-success" role="alert">
+                {{ successDelete }}
+            </div>
         </div>
         <!-- Lägg till hund -->
         <h2>Lägg till ny hund:</h2>
@@ -47,7 +51,8 @@ export default {
     data() {
         return {
             dogs: [], // Hundar
-            loading: true // Loader 
+            loading: true, // Loader 
+            successDelete: "" // Lyckad borttagning av hund
         }
     },
     components: {
@@ -81,7 +86,10 @@ export default {
                 }
             });
 
-            const data = await response.json();
+            if (response.ok) {
+                const data = await response.json();
+                this.successDelete = "Hunden togs bort."
+            }
 
             this.getDogs();
         }
