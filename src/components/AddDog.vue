@@ -1,47 +1,53 @@
 <template>
     <div class="container p-4 mt-2">
-    <!-- Formulär för att lägga till hund -->
-    <form @submit.prevent="addDog()">
-        <div class="mb-3">
+        <!-- Formulär för att lägga till hund -->
+        <form @submit.prevent="addDog()">
+            <div class="mb-3">
                 <label for="name" class="form-label">Hundens namn:</label>
                 <input v-model="dog.name" type="text" id="name" class="form-control">
             </div>
 
-        <div class="mb-3">
+            <div class="mb-3">
                 <label for="owner" class="form-label">Ägare:</label>
                 <input v-model="dog.owner" type="text" id="owner" class="form-control">
             </div>
 
-        <div class="mb-3">
+            <div class="mb-3">
                 <label for="breed" class="form-label">Ras:</label>
                 <input v-model="dog.breed" type="text" id="breed" class="form-control">
             </div>
 
-        <div class="mb-3">
+            <div class="mb-3">
                 <label for="age" class="form-label">Ålder:</label>
                 <input v-model="dog.age" type="number" id="age" class="form-control">
             </div>
 
-        <div class="mb-3">
+            <div class="mb-3">
                 <label for="description" class="form-label">Beskrivning:</label>
                 <textarea v-model="dog.description" id="description" class="form-control"></textarea>
             </div>
 
-        <div class="form-check mb-3">
+            <div class="form-check mb-3">
                 <input v-model="dog.vaccinated" type="checkbox" id="vaccinated" class="form-check-input">
                 <label for="vaccinated" class="form-check-label">Vaccinerad</label>
             </div>
-        
-        <!-- Felmeddelanden -->
-        <div v-if="errors.length" class="error-msg">
-            <p>Du har visst glömt några saker:</p>
-            <ul>
-                <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-            </ul>
-        </div>
-        <button type="submit" class="btn btn-success">Lägg till hund</button>
-    </form>
-</div>
+
+            <!-- Lyckad inmatning av ny hund -->
+            <div v-if="success" class="alert alert-success" role="alert">
+                {{ success }}
+            </div>
+
+            <!-- Felmeddelanden vid ej lyckad inmatning -->
+            <div v-if="errors.length" class="alert alert-danger" role="alert">
+                <p>Du har visst glömt några saker:</p>
+                <ul>
+                    <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+                </ul>
+            </div>
+
+            <button type="submit" class="btn btn-success">Lägg till hund</button>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -56,7 +62,8 @@ export default {
                 description: "",
                 vaccinated: false
             },
-            errors: [] // Ev felmeddelanden
+            errors: [], // Ev felmeddelanden
+            success: "" // Lyckat tillägg av ny hund
         };
     },
     emits: ["dogAdded"],
@@ -64,6 +71,7 @@ export default {
     methods: {
         async addDog() {
             this.errors = []; // Töm ev tidigare fel 
+            this.success = ""; // Töm ev tidigare lyckat meddelande
             // Kontrollera att fält är korrekt ifyllda 
             if (!this.dog.name) this.errors.push("Ange hundens namn.");
             if (!this.dog.owner) this.errors.push("Ange hundens ägare.");
@@ -89,7 +97,7 @@ export default {
 
             if (response.ok) {
                 const data = await response.json();
-                alert("Hund tillagd!");
+                this.success = "Hunden har lagts till!";
             } else {
                 console.error("Error", response.statusText);
             }
@@ -116,32 +124,33 @@ export default {
     background-color: #8f8e8e;
     border-radius: 25px;
 }
+
 form {
     width: 70%;
     margin: 0 auto;
 }
+
 label {
     font-weight: bold;
     font-size: 1em;
-  color: #0e0e0e;
+    color: #0e0e0e;
 }
+
 .btn {
     color: #fff;
     width: 30%;
 }
+
 .btn:hover {
     background-color: #045523;
 }
+
 /* Felmeddelanden */
-.error-msg {
-    margin-bottom: 1em;
-    padding: 1em;
-    color: #d32f2f;
-}
-.error-msg p {
+.alert p {
     font-weight: bold;
 }
-.error-msg ul {
+
+.alert ul {
     margin: 0;
     padding-left: 1.5em;
 }
@@ -156,7 +165,7 @@ label {
 /* Media queries */
 @media screen and (max-width: 587px) {
     .btn {
-    width: 100%;
-  }
+        width: 100%;
+    }
 }
 </style>
