@@ -12,7 +12,7 @@ Hundar från webbtjänsten laddas in med information som namn, ägare, ras, åld
 ## Funktioner
 * **Visa alla hundar:** Samtliga hundar visas i en tabell.
 * **Lägga till hund:** Lägg till ny hund via formulär.
-* **Ta bort hund:** Ta bort hund från tabellen. 
+* **Ta bort hund:** Ta bort en hund från tabellen. 
 
 ## Vue.js
 * Används för att skapa en Single Page Application.
